@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>colors</title>
+</head>
+<body>
+<style type="text/css">
+	.circle {
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		background-color: blue;
+	}
+
+</style>
+<div class="circle" id="bc"> </div>
+<button id= "timestamp">LAST TIME</button>
+<button id ="Scorer">Average TIME </button>	
+
+<p id=first_part> </p>	
+<p id= second_part> </p>
+<p id=third_part> </p>	
+<p id= "fourth_part"> </p>
+<p id ="fifth_part"> </p>
+<script type="text/javascript">
+	function average(a){
+		var sum = 0;
+		var avg= 0;
+		for(var i =0; i< a.length;i++){
+				sum +=a[i];
+			}
+			avg= (sum/a.length);
+			return (avg);
+		}
+
+
+	var count_clicks= 0;
+	var myTimestamps = new Array();
+	var react_time_arr = new Array();
+	document.getElementById("bc").onclick= function(){
+			var d= new Date();
+			var n = d.getTime();
+			var color= " ";
+			var color="#"+((1<<24)*Math.random()|0).toString(16);
+			var height_calc= Math.floor(Math.random()*500);
+			var width_calc = Math.floor(Math.random()*500);
+			var shape_calc= Math.floor(Math.random()*100);
+			var mar_left = Math.floor(Math.random()*500);
+			var mar_right= Math.floor(Math.random()*500);
+			var mar_top = Math.floor(Math.random()*500);
+			var react_time= 0;
+			document.getElementById("bc").style.backgroundColor = color;
+			document.getElementById("bc").style.width=width_calc + "px";
+			document.getElementById("bc").style.height = height_calc + "px";
+			document.getElementById("bc").style.borderRadius = shape_calc + "px";
+			document.getElementById("bc").style.marginLeft= mar_left + "px";
+			document.getElementById("bc").style.marginRight= mar_right + "px";
+			document.getElementById("bc").style.marginTop= mar_top + "px";
+			/* start recording time */
+			/*document.getElementById("first_part").innerHTML = d;
+			document.getElementById("second_part").innerHTML = n;*/
+			myTimestamps.push(n);
+			if (count_clicks==0){
+				react_time=0;
+			}
+			else{
+				react_time = myTimestamps[count_clicks] - myTimestamps[count_clicks-1]
+			}
+			console.log(myTimestamps);
+			document.getElementById("third_part").innerHTML = react_time;
+			react_time_arr.push(react_time);
+			count_clicks +=1;
+			console.log(react_time);
+		}	
+		
+		/*var sum = 0;
+		var avg = 0;
+		document.getElementById("Scorer").onclick= function(){
+			for (var i =0; i < myTimestamps.length; i++){
+				sum += myTimestamps[i];
+			}
+			avg= sum / myTimestamps.length;
+			document.getElementById("fifth_part").innerHTML = sum;
+			document.getElementById("fourth_part").innerHTML = avg;
+		}*/
+		document.getElementById("Scorer").onclick = function(){
+			document.getElementById("fourth_part").innerHTML  = average(react_time_arr);
+		}
+
+
+
+</script>
+</body>
+</html>

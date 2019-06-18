@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>disappearing_circles</title>
+</head>
+<style type="text/css">
+	.squares{
+		height: 100px;
+		width: 100px;
+		border-radius: 50%;
+		float: left;
+		margin-top: 25px;
+		margin-left:10px;
+	}
+	#blue_circle {
+		background: blue;
+		background-color: blue;
+	}
+	#red_circle {
+		background-color: red;
+	}
+	#green_circle {
+		background-color:green;
+	}
+	.transparent_circle{
+		background-color: white;
+	}
+</style>
+<body>
+<p id="hw">Hello</p>
+<div class="squares" id="blue_circle"></div>
+<div class="squares" id="red_circle"></div>
+<div class="squares" id="green_circle"></div>
+<div class="squares transparent_circle"></div>
+
+<script type="text/javascript">
+	document.getElementById("red_circle").onclick=function(){
+		document.getElementById("red_circle").style.backgroundColor="white"
+	}
+	document.getElementById("blue_circle").onclick=function(){
+		document.getElementById("blue_circle").style.backgroundColor="white"
+	}
+	document.getElementById("green_circle").onclick=function(){
+		document.getElementById("green_circle").style.backgroundColor="white"
+	}
+
+
+
+</script>
+
+
+
+</body>
+</html>
